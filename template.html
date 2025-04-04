@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: #94a3b8;
+        }
+        
+        .social-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-thumbnail {
+            height: 160px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .cv-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cv-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .cv-button:hover::after {
+            left: 100%;
+        }
+        
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background-color: #94a3b8;
+            margin: 24px auto;
+            opacity: 0.5;
+        }
+        
+        .dark-mode {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .profile-img {
+            border-color: #334155;
+        }
+        
+        .dark-mode .project-card {
+            background-color: #1e293b;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center py-12 px-4">
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon text-gray-700"></i>
+    </div>
+    
+    <div class="max-w-4xl w-full mx-auto text-center">
+        <!-- Profile Section -->
+        <div class="flex flex-col items-center mb-12">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                 alt="Profile Photo" 
+                 class="profile-img mb-6">
+            
+            <h1 class="text-3xl font-semibold mb-2">Mohit Awasthi</h1>
+            <h2 class="text-xl text-slate-500 mb-4">ML Engineer & Data Scientist</h2>
+            
+            <p class="max-w-lg mx-auto text-slate-600 mb-6 leading-relaxed">
+                I work with data and ML algorithms. I also like to tinker with Generative AI models.
+            </p>
+            
+            <a href="#" class="cv-button inline-block bg-slate-800 text-white px-6 py-2 rounded-full mb-8">
+                Download CV <i class="fas fa-download ml-2"></i>
+            </a>
+            
+            <div class="flex space-x-4 justify-center">
+                <a href="#" class="social-icon text-slate-600 hover:text-blue-500 text-xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon text-slate-600 hover:text-blue-400 text-xl">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/awasthimohit/" class="social-icon text-slate-600 hover:text-orange-500 text-xl">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon text-slate-600 hover:text-pink-500 text-xl">
+                    <i class="fab fa-dribbble"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Projects Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-8">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                <!-- Project 1 -->
+                <a href="https://github.com/awasthimohit1/IBM-Data-Science-Capstone" class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Dashboard Project" 
+                         class="project-thumbnail">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-1">Analytics Dashboard</h3>
+                        <p class="text-sm text-slate-500">React, Tailwind, D3.js</p>
+                    </div>
+                </a>
+                
+                <!-- Project 2 -->
+                <a href="#" class="project-card">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                         alt="E-commerce Project" 
+                         class="project-thumbnail">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-1">E-commerce Platform</h3>
+                        <p class="text-sm text-slate-500">Next.js, Stripe, MongoDB</p>
+                    </div>
+                </a>
+                
+                <!-- Project 3 -->
+                <a href="#" class="project-card">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" 
+                         alt="Mobile App Project" 
+                         class="project-thumbnail">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-1">Fitness Tracker App</h3>
+                        <p class="text-sm text-slate-500">React Native, Firebase</p>
+                    </div>
+                </a>
+            </div>
+            
+            <a href="#" class="inline-block mt-8 text-slate-600 hover:text-slate-800 transition-colors">
+                View all projects <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Contact Section -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Get In Touch</h2>
+            <p class="max-w-lg mx-auto text-slate-600 mb-6">
+                Interested in working together or have a project in mind? 
+                I'd love to hear from you.
+            </p>
+            <a href="mailto:hello@example.com" class="inline-block bg-transparent border border-slate-300 text-slate-600 hover:bg-slate-100 px-6 py-2 rounded-full transition-colors">
+                hello@example.com
+            </a>
+        </div>
+    </div>
+    
+    <footer class="mt-12 text-sm text-slate-400">
+        © 2023 Alex Johnson. All rights reserved.
+    </footer>
+    
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                icon.classList.remove('text-gray-700');
+                icon.classList.add('text-yellow-300');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                icon.classList.remove('text-yellow-300');
+                icon.classList.add('text-gray-700');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Project card click animation
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Prevent default if it's a real link
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+                
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
